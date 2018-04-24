@@ -1,6 +1,7 @@
 const express = require('express');
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
+const path = require('path')
 
 const app = express()
 const config = require('./webpack.dev.config')
@@ -33,7 +34,7 @@ compiler.plugin('compilation', function(compilation) {
 app.use(hotMiddleware);
 
 // 配置路由 解析 html
-
+// 如果要匹配更加复杂的路由，可以使用正则
 app.get('/:viewname?', function (req, res, next) {
     let viewname = req.params.viewname ? req.params.viewname + '.html' : 'index.html'    
     var filepath = path.join(compiler.outputPath, viewname);

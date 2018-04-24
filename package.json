@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.prod.config.js",
+    "build": "webpack --config ./build/webpack.dev.config.js",
     "server": "node ./build/server.js"
   },
   "author": "",
@@ -15,12 +15,16 @@
     "webpack": "^4.6.0"
   },
   "devDependencies": {
+    "babel-loader": "^7.1.4",
     "clean-webpack-plugin": "^0.1.19",
     "ejs-compiled-loader": "^1.1.0",
+    "eventsource-polyfill": "^0.9.6",
+    "glob": "^7.1.2",
     "html-webpack-plugin": "^3.2.0",
     "webpack-cli": "^2.0.15",
     "webpack-dev-middleware": "^3.1.2",
     "webpack-dev-server": "^3.1.3",
-    "webpack-hot-middleware": "^2.22.1"
+    "webpack-hot-middleware": "^2.22.1",
+    "webpack-merge": "^4.1.2"
   }
 }
