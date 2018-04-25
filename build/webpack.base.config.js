@@ -1,6 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
 
+function resolve(dir) {
+    return path.join(__dirname, '..', dir)
+}
 module.exports = {
     entry: {
         app: './src/app.js'
@@ -15,14 +18,14 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                include: [path.join(__dirname, '../src')]            
+                include: [resolve('src')]       
             }
         ]
     },
     resolve: {
         extensions: ['.js', '.json', 'ejs'],
         alias: {
-            '@': path.join(__dirname, 'src')           
+            '@': resolve('src'),     
         }
     }
 }
