@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>导航页面</title>
+    <style>
+        .contentPage {
+            width: 1000px;
+            margin: 0 auto;  
+                                    
+        }
+    </style>
+</head>
+<body>
+    <div class="contentPage">
+        <h3>
+            首页
+        </h3>
+        <a href="/index">index.html</a>        
+        <h3>
+            components
+        </h3>
+        <div id="componets"></div>
+    </div>
+</body>
+</html>
+<script>
+    $(function() {
+        $.ajax({
+             type: "GET",
+             url: "/get/menu",
+             data: {},
+             dataType: "json",
+             success: function(data){
+                 var html = ''
+                 Object.keys(data.compoents).forEach(function(_key) {
+                     html += '<h5>'+ _key +'</h5>'
+                     for(var i =0; i < data.compoents[_key].length ; i ++) {
+                         html += '<a href="'+_key+'.preview.ejs">'+ data.compoents[_key][i] +'</a>'
+                         html += '</br>'
+                     }
+                 })
+                 $('#componets').append(html)
+             }
+         });
+    })
+</script>

@@ -33,12 +33,12 @@ const HtmlTpl = getEntry('./src/**/*.ejs')
 const htmlConfig = () => {
     let config = []
     for (let attr in HtmlTpl) {
-        if (attr === 'index') { // 首页
+        if (attr.indexOf('preview') === -1) { // 首页 和导航页面
             config.push(
                 new HtmlWebpackPlugin({
                     filename: `./${attr}.html`,
                     template: HtmlTpl[attr],
-                    chunks: ['app'], // 选择要打包js 入口文件
+                    chunks: ['app', 'verdors'], // 选择要打包js 入口文件
                     chunksSortMode: 'dependency',
                     inject: true
                 })
@@ -48,7 +48,7 @@ const htmlConfig = () => {
                 new HtmlWebpackPlugin({
                     filename: `./${attr}.html`,
                     template: HtmlTpl[attr],
-                    chunks: [HtmlTpl[attr].split('/')[3]], // 预览模块js独立打包
+                    chunks: ['verdors', HtmlTpl[attr].split('/')[3]], // 预览模块js独立打包
                     chunksSortMode: 'dependency',
                     inject: true
                 })
@@ -59,7 +59,7 @@ const htmlConfig = () => {
     return config;
 }
 
-var obj = merger(baseWebpackConfig, {
+module.exports = merger(baseWebpackConfig, {
     entry: Entry,
     devtool: '#cheap-module-eval-source-map',
     output: {
@@ -75,4 +75,3 @@ var obj = merger(baseWebpackConfig, {
     ].concat(htmlConfig()),
     mode: 'development'
 })
-module.exports = obj

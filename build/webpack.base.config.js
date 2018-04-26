@@ -6,7 +6,8 @@ function resolve(dir) {
 }
 module.exports = {
     entry: {
-        app: './src/app.js'
+        app: './src/app.js',
+        verdors: './src/verdors.js'
     },
     module: {
         rules: [
