@@ -14,7 +14,10 @@ module.exports = {
             {
                 test: /\.ejs$/,
                 exclude: /node_modules/,
-                loader: 'ejs-compiled-loader'
+                use: [{
+                    loader: 'ejs-compiled-loader'
+                }]
+                
             },
             {
                 test: /\.js$/,
