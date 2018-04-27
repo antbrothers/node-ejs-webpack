@@ -41,8 +41,10 @@
                          if (data.compoents[_key][i].split('/')[3].indexOf('preview') > -1) {
                             html += '<a href="'+_key+'.preview.ejs">'+ data.compoents[_key][i] +'</a>'                            
                          } else {                            
-                            if (data.compoents[_key][i].split('/')[3].indexOf('ejs') == -1) {
-                                html += '<a href="'+data.compoents[_key][i].split('/')[3]+'">'+ data.compoents[_key][i] +'</a>'  
+                            if (data.compoents[_key][i].split('/')[3].indexOf('.js') > -1) {
+                                html += '<a href="js/'+data.compoents[_key][i].split('/')[3]+'">'+ data.compoents[_key][i] +'</a>'  
+                            } else if  (data.compoents[_key][i].split('/')[3].indexOf('.less') > -1)   {
+                                html += '<a href="css/'+data.compoents[_key][i].split('/')[3].split('.')[0]+'.css">'+ data.compoents[_key][i] +'</a>'  
                             }
                          }
                         
