@@ -25,7 +25,6 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
 // 每当检测到一个文件变化，就会创建一个新的 compilation，从而生成一组新的编译资源
 // 当html-webpack-plugin template更改之后，强制刷新浏览器
 compiler.plugin('compilation', function (compilation) {
-
     compilation.plugin('html-webpack-plugin-after-emit', function (data) {
         hotMiddleware.publish({
             action: 'reload'
@@ -85,8 +84,6 @@ app.get('/:page?', function (req, res, next) {
         res.end();
     })
 })
-
-
 app.listen(3000, function () {
-    console.log('Example app listening on port 3000!\n');
+    console.log('服务器已开启端口: 3000!\n');
 })

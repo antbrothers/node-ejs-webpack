@@ -73,7 +73,7 @@ module.exports = merger(baseWebpackConfig, {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '..', 'dist'),
-        publicPath: '/' //也会在服务器脚本用到
+        publicPath: '' //也会在服务器脚本用到
     },   
     plugins: [
         new webpack.HotModuleReplacementPlugin(),  // 实现刷新浏览器
