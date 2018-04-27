@@ -71,7 +71,7 @@ module.exports = merger(baseWebpackConfig, {
     entry: Entry,
     devtool: '#cheap-module-eval-source-map',
     output: {
-        filename: '[name].js',
+        filename: 'js/[name].js',
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '' //也会在服务器脚本用到
     },   
@@ -79,7 +79,7 @@ module.exports = merger(baseWebpackConfig, {
         new webpack.HotModuleReplacementPlugin(),  // 实现刷新浏览器
         new CleanWebpackPlugin(['dist']),
         new webpack.NoEmitOnErrorsPlugin(),
-        new ExtractTextPlugin('[name].css')       
+        new ExtractTextPlugin('css/[name].css')       
     ].concat(htmlConfig()),
     mode: 'development'
 })
