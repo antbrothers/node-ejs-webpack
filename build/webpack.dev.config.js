@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const merger = require('webpack-merge')
+const ExtractTextPlugin = require('extract-text-webpack-plugin') 
 
 const baseWebpackConfig = require('./webpack.base.config')
 
@@ -18,17 +19,24 @@ function getEntry(globPath) {
 
     glob.sync(globPath).forEach(function (entry) {
         basename = path.basename(entry, path.extname(entry));
-        tmp = entry.split('/').splice(-3);        
-        if (basename === 'preview') {
-            entries[tmp[1]+'.preview'] = entry;
-        } else {
-            entries[basename] = entry;
-        }        
+        tmp = entry.split('/').splice(-3);
+        // 过滤掉本模块的 ejs 的入口文件
+        if (path.extname(entry).indexOf('.ejs')> -1 && tmp[2].indexOf(tmp[1]) === -1 || path.extname(entry).indexOf('.js') > -1) {
+            if (basename === 'preview') {
+                entries[tmp[1] + '.preview'] = entry;
+            } else {
+                entries[basename] = entry;
+            }
+        }       
     });
     return entries;
 }
 const Entry = getEntry('./src/components/**/*.js')
 const HtmlTpl = getEntry('./src/**/*.ejs')
+
+// multiple extract instances
+// let extractCSS = new ExtractTextPlugin('./src/components/[name].css');
+// let extractLESS = new ExtractTextPlugin('./src/components/[name].less');
 
 const htmlConfig = () => {
     let config = []
@@ -38,7 +46,7 @@ const htmlConfig = () => {
                 new HtmlWebpackPlugin({
                     filename: `./${attr}.html`,
                     template: HtmlTpl[attr],
-                    chunks: ['verdors','app'], // 选择要打包js 入口文件
+                    chunks: ['common', 'app'], // 选择要打包js 入口文件
                     chunksSortMode: 'manual',  // 顺序插入js
                     inject: true
                 })
@@ -48,7 +56,7 @@ const htmlConfig = () => {
                 new HtmlWebpackPlugin({
                     filename: `./${attr}.html`,
                     template: HtmlTpl[attr],
-                    chunks: ['verdors', HtmlTpl[attr].split('/')[3]], // 预览模块js独立打包
+                    chunks: ['common', HtmlTpl[attr].split('/')[3]], // 预览模块js独立打包
                     chunksSortMode: 'manual',
                     inject: true
                 })
@@ -66,12 +74,12 @@ module.exports = merger(baseWebpackConfig, {
         filename: '[name].js',
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '/' //也会在服务器脚本用到
-    },
+    },   
     plugins: [
         new webpack.HotModuleReplacementPlugin(),  // 实现刷新浏览器
         new CleanWebpackPlugin(['dist']),
         new webpack.NoEmitOnErrorsPlugin(),
-      
+        new ExtractTextPlugin('[name].css')       
     ].concat(htmlConfig()),
     mode: 'development'
 })
