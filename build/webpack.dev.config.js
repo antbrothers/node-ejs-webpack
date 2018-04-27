@@ -38,8 +38,8 @@ const htmlConfig = () => {
                 new HtmlWebpackPlugin({
                     filename: `./${attr}.html`,
                     template: HtmlTpl[attr],
-                    chunks: ['app', 'verdors'], // 选择要打包js 入口文件
-                    chunksSortMode: 'dependency',
+                    chunks: ['verdors','app'], // 选择要打包js 入口文件
+                    chunksSortMode: 'manual',  // 顺序插入js
                     inject: true
                 })
             )
@@ -49,7 +49,7 @@ const htmlConfig = () => {
                     filename: `./${attr}.html`,
                     template: HtmlTpl[attr],
                     chunks: ['verdors', HtmlTpl[attr].split('/')[3]], // 预览模块js独立打包
-                    chunksSortMode: 'dependency',
+                    chunksSortMode: 'manual',
                     inject: true
                 })
             )

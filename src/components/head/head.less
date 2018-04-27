@@ -5,6 +5,32 @@
     line-height: 40px;
     background: #F8F8F8;
     margin: 0 auto;
+    .icon-map {
+        color: #999;
+        width: 10px;
+        height: 10px;
+        margin-top: 13px;
+        margin-right: 3px;
+        margin-bottom: 12px;
+        margin-left: 3px;
+        border: solid 1px currentColor;
+        border-radius: 16px 16px 16px 0;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: ratate(-45deg);
+        transform: rotate(-45deg);
+        display: block;
+        float: left;
+    }
+    .icon-map:after {
+        content: "";
+        width: 3px;
+        height: 3px;
+        border: 1px solid currentcolor;
+        position: absolute;
+        top: 3px;
+        left: 2px;
+        border-radius: 100%;
+    }
     .current-city {
         color: #666;
     }
@@ -22,15 +48,31 @@
             color: #999;
         }
     }
+    .user-entry {
+        margin-left: 15px;
+        .user-importent {
+            color: #31BBAC;
+        }
+        a {
+            margin-left: 10px;
+            color: #999999;
+        }
+    }
     .header-bar .header-bar-nav {
         float: right;
         ul {
             padding: 0;
             margin: 0;
             li {
-                list-style: none; 
+                list-style: none;
             }
         }
+    }
+    .web-addr:hover {
+        color: #31BBAC;
+        background-color: #fff;
+        border-color: #E5E5E5;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .1);
     }
     .header-bar .header-nav-first>li {
         float: left;
@@ -40,5 +82,72 @@
         box-sizing: border-box;
         border-left: 1px solid transparent;
         border-right: 1px solid transparent;
+        line-height: 16px;
+    }
+    .header-bar .header-nav-site {
+        width: 917px;
+        box-sizing: border-box;
+        border-top-left-radius: 4px;
+        padding: 30px 36px 36px 47px;
+    }
+    .header-bar .header-nav-second {
+        position: absolute;
+        background: #fff;
+        text-align: center;
+        z-index: 1000;
+        right: -1px;
+        top: 95%;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .1);
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        box-sizing: content-box;
+        display: none;
+        dt {
+            margin-bottom: 20px;
+        }
+        dd {
+            a {
+                color: #999;
+                line-height: 22px;
+            }
+        }
+    }
+    .header-bar .header-nav-third {
+        float: left;
+    }
+    .header-bar .header-jiulv {
+        width: 256px;
+        dd {
+            width: 29%;
+            text-align: center;
+            float: left;
+            margin-left: 10px;
+        }
+    }
+    .header-bar .header-meishi {
+        width: 156px;
+        dd {
+            float: left;
+            margin-left: 34px;
+        }
+    }
+    .header-bar .header-movie {
+        width: 90px;
+        dd {
+            margin-left: 0px;
+        }
+    }
+    .header-bar .header-app {
+        float: right;
+        width: 395px;
+        dd {
+            float: left;
+            margin-left: 10px;
+            img {
+                width: 60px;
+                height: 60px;
+                border: 0;
+            }
+        }
     }
 }
