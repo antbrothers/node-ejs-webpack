@@ -39,12 +39,10 @@
                      html += '<h5>'+ _key +'</h5>'
                      for(var i =0; i < data.compoents[_key].length ; i ++) {
                          if (data.compoents[_key][i].split('/')[3].indexOf('preview') > -1) {
-                            html += '<a href="'+_key+'.preview.ejs">'+ data.compoents[_key][i] +'</a>'
-                            html += '<span style="color: #FFC107;font-size: 12px;margin-left: 10px;">(独立模块,支持预览,模块独立调试)</span>'
-                         } else {
-                            html += '<a href="'+data.compoents[_key][i].split('/')[3]+'">'+ data.compoents[_key][i] +'</a>'
-                            if (data.compoents[_key][i].split('/')[3].indexOf('ejs') > -1) {
-                                html += '<span style="color: #FFC107;font-size: 12px;margin-left: 10px;">(独立模块,支持预览,但是js是包含所有模块)</span>'
+                            html += '<a href="'+_key+'.preview.ejs">'+ data.compoents[_key][i] +'</a>'                            
+                         } else {                            
+                            if (data.compoents[_key][i].split('/')[3].indexOf('ejs') == -1) {
+                                html += '<a href="'+data.compoents[_key][i].split('/')[3]+'">'+ data.compoents[_key][i] +'</a>'  
                             }
                          }
                         
