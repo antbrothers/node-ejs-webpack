@@ -9,6 +9,7 @@ const app = express()
 const config = require('./webpack.dev.config')
 const compiler = webpack(config)
 
+app.use('/assets', express.static('src/assets'))
 // 把wepack-dev-middleware当做一个中间件使用
 // 把 webpack 处理后的文件,写入到内存中，并且传递给服务器(server)
 app.use(webpackDevMiddleware(compiler, {

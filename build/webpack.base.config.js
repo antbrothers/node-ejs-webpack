@@ -55,13 +55,16 @@ module.exports = {
                 })
             },          
             {
-                test: /\.((woff2?|svg)(\?v=[0-9]\.[0-9]\.[0-9]))|(woff2?|svg|jpe?g|png|gif|ico)$/,
-                loaders: [
-                    // 小于10KB的图片会自动转成dataUrl
-                    'url?limit=10240&name=img/[hash:8].[name].[ext]',
-                    'image?{bypassOnDebug:true, progressive:true,optimizationLevel:3,pngquant:{quality:"65-80",speed:4}}'
-                ]
-            },
+                test: /\.(gif|jpe?g|png|svg|mp3|ttf)$/i,
+                loader: "url-loader",
+                include: [                 
+                  path.resolve(__dirname, "./src/assets"),                
+                ],
+                query: {
+                  limit: 5000,
+                  name: '[name].[hash:16].[ext]'                 
+                }
+              }
         ]
     },
     resolve: {
