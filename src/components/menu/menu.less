@@ -1,3 +1,153 @@
-.pp {
-    color: red;
+.left-banner {
+    .category-nav-container {
+        position: relative;
+        width: 230px;
+        height: 475px;      
+        color: #FFF;      
+        background: rgba(2,181,157,.85);
+        background: -webkit-linear-gradient(-90deg,rgba(2,181,157,.85) 2%,rgba(22,146,183,.85) 100%);
+        background: -o-linear-gradient(-90deg,rgba(2,181,157,.85) 2%,rgba(22,146,183,.85) 100%);
+        background: -moz-linear-gradient(-90deg,rgba(2,181,157,.85) 2%,rgba(22,146,183,.85) 100%);     
+        .category-nav-title-wrapper {
+            background: #65c7b3;
+            height: 47px;
+            padding-top: 15px;
+            box-sizing: border-box;
+            .category-nav-title {
+                font-size: 16px;
+                font-weight: 400;
+                margin-left: 15px;
+            }
+        }
+        .category-nav-content-wrapper {           
+            ul {
+                padding: 0;
+                margin: 0;
+                padding-top: 12px;
+            }
+            li {
+                list-style: none;
+            }
+            .nav-li {
+                position: relative;
+                box-sizing: border-box;
+                padding: 2px 12px;
+                height: 26px;
+                overflow: hidden;
+                img {
+                    float: left;
+                    margin-top: 3px;
+                    margin-right: 10px;
+                    width: 17px;
+                }
+                .nav-text-wrapper {
+                    padding-top: 10px;
+                    display: block;
+                    float: left;
+                    margin-top: -8px;
+                }
+                .home-category-iconfont {
+                    font-family: home-category-iconfont!important;
+                    font-size: 14px;
+                    font-style: normal;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+                nav-text-wrapper {
+                    display: inline-block;
+                    margin-left: 11px;
+                }
+                .nav-text {
+                    font-size: 13px;
+                    line-height: 20px;
+                    height: 20px;
+                    color: #fff;
+                    cursor: pointer;
+                }
+                .nav-right-arrow {
+                    width: 4px;
+                    height: 4px;
+                    border-bottom: 1px solid #fff;
+                    border-right: 1px solid #fff;
+                    transform: rotate(-45deg);
+                    display: block;
+                    position: absolute;
+                    right: 13px;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                }
+            }
+            .nav-li:hover {
+                background: rgba(255,255,255,.2);
+            }
+        }
+
+        .category-nav-detail-wrapper {
+            position: absolute;
+            top: 60px;
+            left: 230px;
+            width: 400px;
+            height: 416px;
+            background-color: #fff;
+            z-index: 199;
+            color: #666;
+            overflow: hidden;
+            padding-left: 20px;
+            padding-right: 20px;
+            .category-nav-container .detail-area {
+                padding: 0 30px;
+            }
+            .detail-title-wrapper {                
+                height: 22px;
+                line-height: 22px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #e5e5e5;
+                h2 {
+                    margin: 0;                  
+                    padding: 0;
+                    a {
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #222;
+                        cursor: pointer;
+                        float: left;
+                    }                    
+                }
+                .detail-more {
+                    font-size: 12px;
+                    color: #999;
+                    font-weight: 400;
+                    float: right;
+                    margin-right: 6px;
+                    position: relative;
+                    cursor: pointer;                    
+                }
+                .detail-right-arrow {
+                    width: 4px;
+                    height: 4px;
+                    border-bottom: 1px solid #999;
+                    border-right: 1px solid #999;
+                    transform: rotate(-45deg);
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: -6px;
+                    margin: auto;
+                }
+                
+            }
+            .detail-text {
+                color: #999;
+                font-size: 12px;
+                line-height: 15px;
+                display: inline-block;
+                margin-right: 16px;
+                margin-top: 10px;
+                cursor: pointer;
+            }
+        }
+        
+    }
 }
