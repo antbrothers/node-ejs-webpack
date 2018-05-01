@@ -1,4 +1,5 @@
 require('./components/head/head')
 require('./components/menu/menu')
 require('./components/banner/banner')
+require('./components/pattern/pattern')
 console.log('3232434343')
