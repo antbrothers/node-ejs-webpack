@@ -10,7 +10,7 @@ const baseWebpackConfig = require('./webpack.base.config')
 const glob = require('glob')
 
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
+    baseWebpackConfig.entry[name] = [path.resolve(__dirname, '.', 'dev-client')].concat(baseWebpackConfig.entry[name])
 })
 
 function getEntry(globPath) {
