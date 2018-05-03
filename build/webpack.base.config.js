@@ -7,7 +7,7 @@ function resolve(dir) {
 module.exports = {
     entry: {
         app: path.resolve(__dirname, '..', 'src/app.js'),
-        common: path.resolve(__dirname, '..' , 'src/verdors.js')
+        common: path.resolve(__dirname, '..', 'src/verdors.js')
     },
     module: {
         rules: [
@@ -16,14 +16,15 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [{
                     loader: 'ejs-compiled-loader'
+                    // loader: 'underscore-template-loader'
                 }]
-                
+
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                include: [resolve('src')]       
-            }, 
+                include: [resolve('src')]
+            },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -53,24 +54,24 @@ module.exports = {
                         }
                     ]
                 })
-            },          
+            },
             {
                 test: /\.(gif|jpe?g|png|svg|mp3|ttf)$/i,
                 loader: "url-loader",
-                include: [                 
-                  path.resolve(__dirname, "..", 'src/assets/images'),                
+                include: [
+                    path.resolve(__dirname, "..", 'src/assets/images'),
                 ],
                 query: {
-                  limit: 5000,
-                  name: '[name].[hash:16].[ext]'                 
+                    limit: 5000,
+                    name: '[name].[hash:16].[ext]'
                 }
-              }
+            }
         ]
     },
     resolve: {
         extensions: ['.js', '.json', 'ejs'],
         alias: {
-            '@': resolve('src'),     
-        }        
+            '@': resolve('src'),
+        }
     }
 }

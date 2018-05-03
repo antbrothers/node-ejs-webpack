@@ -9,7 +9,7 @@ const app = express()
 const config = require('./webpack.dev.config')
 const compiler = webpack(config)
 
-// app.use('/assets', express.static('src/assets'))
+app.use('/assets', express.static('src/assets'))
 
 
 // 把wepack-dev-middleware当做一个中间件使用
