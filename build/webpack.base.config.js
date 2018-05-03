@@ -58,7 +58,7 @@ module.exports = {
                 test: /\.(gif|jpe?g|png|svg|mp3|ttf)$/i,
                 loader: "url-loader",
                 include: [                 
-                  path.resolve(__dirname, "./src/assets"),                
+                  path.resolve(__dirname, "..", 'src/assets/images'),                
                 ],
                 query: {
                   limit: 5000,

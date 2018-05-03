@@ -9,7 +9,9 @@ const app = express()
 const config = require('./webpack.dev.config')
 const compiler = webpack(config)
 
-app.use('/assets', express.static('src/assets'))
+// app.use('/assets', express.static('src/assets'))
+
+
 // 把wepack-dev-middleware当做一个中间件使用
 // 把 webpack 处理后的文件,写入到内存中，并且传递给服务器(server)
 app.use(webpackDevMiddleware(compiler, {
@@ -74,7 +76,7 @@ app.get('/:page?', function (req, res, next) {
             page = req.params.page ? req.params.page + '.html' : 'contentpage.html'
         }       
     }
-    var filepath = path.join(compiler.outputPath, page);
+    var filepath = path.join(compiler.outputPath, page);    
     // 从内存中读取文件
     compiler.outputFileSystem.readFile(filepath, function (err, result) {
         if (err) {
