@@ -12,19 +12,27 @@ module.exports = {
     module: {
         rules: [
             {
+                test: require.resolve('jquery'),
+                use: [{
+                    loader: 'expose-loader',
+                    options: 'jQuery'
+                },{
+                    loader: 'expose-loader',
+                    options: '$'
+                }]
+            },
+            {
                 test: /\.ejs$/,
                 exclude: /node_modules/,
                 use: [{
-                    loader: 'ejs-compiled-loader'
-                    // loader: 'underscore-template-loader'
+                    loader: 'ejs-compiled-loader'                 
                 }]
-
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [resolve('src')]
-            },
+            },            
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -56,22 +64,20 @@ module.exports = {
                 })
             },
             {
-                test: /\.(gif|jpe?g|png|svg|mp3|ttf)$/i,
-                loader: "url-loader",
-                include: [
-                    path.resolve(__dirname, "..", 'src/assets/images'),
-                ],
-                query: {
-                    limit: 5000,
-                    name: '[name].[hash:16].[ext]'
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/img/[name].[ext]',
                 }
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.json', 'ejs'],
+        extensions: ['.js', '.json', '.ejs'],
         alias: {
             '@': resolve('src'),
+            '^': resolve('static')         
         }
     }
 }

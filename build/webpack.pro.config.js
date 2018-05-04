@@ -9,10 +9,6 @@ const baseWebpackConfig = require('./webpack.base.config')
 
 const glob = require('glob')
 
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    baseWebpackConfig.entry[name] = [path.resolve(__dirname, '.', 'dev-client')].concat(baseWebpackConfig.entry[name])
-})
-
 function getEntry(globPath) {
     var entries = {},
         basename, tmp;
@@ -33,10 +29,6 @@ function getEntry(globPath) {
 }
 const Entry = getEntry('./src/components/**/*.js')
 const HtmlTpl = getEntry('./src/**/*.ejs')
-
-// multiple extract instances
-// let extractCSS = new ExtractTextPlugin('./src/components/[name].css');
-// let extractLESS = new ExtractTextPlugin('./src/components/[name].less');
 
 const htmlConfig = () => {
     let config = []
@@ -68,22 +60,20 @@ const htmlConfig = () => {
 }
 
 module.exports = merger(baseWebpackConfig, {
-    entry: Entry,
-    devtool: '#cheap-module-eval-source-map',
+    entry: Entry, 
     output: {
         filename: 'js/[name].js',
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '' //也会在服务器脚本用到
     },   
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),  // 实现刷新浏览器
+    plugins: [     
         new CleanWebpackPlugin(['dist']),
         new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin('css/[name].css'),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"         
-          })         
+          })           
     ].concat(htmlConfig()),
-    mode: 'development'
+    mode: 'production'
 })
