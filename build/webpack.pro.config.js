@@ -3,8 +3,8 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const merger = require('webpack-merge')
-const ExtractTextPlugin = require('extract-text-webpack-plugin') 
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.config')
 
 const glob = require('glob')
@@ -17,13 +17,13 @@ function getEntry(globPath) {
         basename = path.basename(entry, path.extname(entry));
         tmp = entry.split('/').splice(-3);
         // 过滤掉本模块的 ejs 的入口文件
-        if (path.extname(entry).indexOf('.ejs')> -1 && tmp[2].indexOf(tmp[1]) === -1 || path.extname(entry).indexOf('.js') > -1) {
+        if (path.extname(entry).indexOf('.ejs') > -1 && tmp[2].indexOf(tmp[1]) === -1 || path.extname(entry).indexOf('.js') > -1) {
             if (basename === 'preview') {
                 entries[tmp[1] + '.preview'] = entry;
             } else {
                 entries[basename] = entry;
             }
-        }       
+        }
     });
     return entries;
 }
@@ -60,20 +60,36 @@ const htmlConfig = () => {
 }
 
 module.exports = merger(baseWebpackConfig, {
-    entry: Entry, 
+    entry: Entry,
     output: {
         filename: 'js/[name].js',
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '' //也会在服务器脚本用到
-    },   
-    plugins: [     
+    },
+    plugins: [
         new CleanWebpackPlugin(['dist']),
         new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin('css/[name].css'),
         new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery"         
-          })           
+            jQuery: "jquery"
+        }),
+        new UglifyJSPlugin({
+            uglifyOptions: {
+                ie8: false,
+                output: {
+                    comments: false,
+                    beautify: false,
+                },
+                mangle: {
+                    keep_fnames: true
+                },
+                compress: {
+                    warnings: false,
+                    drop_console: true
+                },
+            }
+        }),
     ].concat(htmlConfig()),
     mode: 'production'
 })

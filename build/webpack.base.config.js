@@ -66,9 +66,11 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
+                include: path.resolve(__dirname, '..', 'src/assets'),
                 options: {
                     limit: 10000,
-                    name: 'static/img/[name].[ext]',
+                    name: '[name].[ext]',
+                    outputPath: 'images/'
                 }
             }
         ]
@@ -76,8 +78,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.json', '.ejs'],
         alias: {
-            '@': resolve('src'),
-            '^': resolve('static')         
+            '@': resolve('src')              
         }
     }
 }

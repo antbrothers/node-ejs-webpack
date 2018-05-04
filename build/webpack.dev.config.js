@@ -3,8 +3,8 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const merger = require('webpack-merge')
-const ExtractTextPlugin = require('extract-text-webpack-plugin') 
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const baseWebpackConfig = require('./webpack.base.config')
 
 const glob = require('glob')
@@ -21,22 +21,19 @@ function getEntry(globPath) {
         basename = path.basename(entry, path.extname(entry));
         tmp = entry.split('/').splice(-3);
         // 过滤掉本模块的 ejs 的入口文件
-        if (path.extname(entry).indexOf('.ejs')> -1 && tmp[2].indexOf(tmp[1]) === -1 || path.extname(entry).indexOf('.js') > -1) {
+        if (path.extname(entry).indexOf('.ejs') > -1 && tmp[2].indexOf(tmp[1]) === -1 || path.extname(entry).indexOf('.js') > -1) {
             if (basename === 'preview') {
                 entries[tmp[1] + '.preview'] = entry;
             } else {
                 entries[basename] = entry;
             }
-        }       
+        }
     });
     return entries;
 }
 const Entry = getEntry('./src/components/**/*.js')
 const HtmlTpl = getEntry('./src/**/*.ejs')
 
-// multiple extract instances
-// let extractCSS = new ExtractTextPlugin('./src/components/[name].css');
-// let extractLESS = new ExtractTextPlugin('./src/components/[name].less');
 
 const htmlConfig = () => {
     let config = []
@@ -74,7 +71,7 @@ module.exports = merger(baseWebpackConfig, {
         filename: 'js/[name].js',
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '' //也会在服务器脚本用到
-    },   
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),  // 实现刷新浏览器
         new CleanWebpackPlugin(['dist']),
@@ -82,8 +79,19 @@ module.exports = merger(baseWebpackConfig, {
         new ExtractTextPlugin('css/[name].css'),
         new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery"         
-          })         
+            jQuery: "jquery"
+        }),
+        new BundleAnalyzerPlugin({          
+            analyzerMode: 'server',        
+            analyzerHost: '127.0.0.1',        
+            analyzerPort: 8888,         
+            reportFilename: 'report.html',        
+            defaultSizes: 'parsed',         
+            openAnalyzer: true,                   
+            statsFilename: 'stats.json',       
+            statsOptions: null,
+            logLevel: 'info'
+        })
     ].concat(htmlConfig()),
     mode: 'development'
 })
