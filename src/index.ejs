@@ -7,30 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
     <header class="com-header">
-        <div>
-            <%= include ./src/components/head/head.ejs %>
+        <div>                        
+            <%= require('../src/components/head/head.ejs')() %>          
         </div>
     </header>
     <div class="container">
         <div class="main menu-container">
-            <div class="left-banner">
-                <%= include ./src/components/menu/menu.ejs %>
+            <div class="left-banner">                     
+                <%= require('../src/components/menu/menu.ejs')() %>   
             </div>
-            <div class="right-banner">
-                <%= include ./src/components/banner/banner.ejs %>
+            <div class="right-banner">                   
+                <%= require('../src/components/banner/banner.ejs')() %>  
             </div>
         </div>
     </div>
-    <div class="main pattern-container quality-container">
-        <%= include ./src/components/pattern/pattern.ejs %>
+    <div class="main pattern-container quality-container">        
+        <%= require('../src/components/pattern/pattern.ejs')() %>  
     </div>
 
-    <div class="main  quality-container">
-        <%= include ./src/components/discount/discount.ejs %>
+    <div class="main  quality-container">      
+        <%= require('../src/components/discount/discount.ejs')() %>  
     </div>
 </body>
-
 </html>

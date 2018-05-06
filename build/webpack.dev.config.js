@@ -81,17 +81,17 @@ module.exports = merger(baseWebpackConfig, {
             $: "jquery",
             jQuery: "jquery"
         }),
-        new BundleAnalyzerPlugin({          
-            analyzerMode: 'server',        
-            analyzerHost: '127.0.0.1',        
-            analyzerPort: 8888,         
-            reportFilename: 'report.html',        
-            defaultSizes: 'parsed',         
-            openAnalyzer: true,                   
-            statsFilename: 'stats.json',       
-            statsOptions: null,
-            logLevel: 'info'
-        })
+        // new BundleAnalyzerPlugin({
+        //     analyzerMode: 'server',
+        //     analyzerHost: '127.0.0.1',
+        //     analyzerPort: 8888,
+        //     reportFilename: 'report.html',
+        //     defaultSizes: 'parsed',
+        //     openAnalyzer: true,
+        //     statsFilename: 'stats.json',
+        //     statsOptions: null,
+        //     logLevel: 'info'
+        // })
     ].concat(htmlConfig()),
     mode: 'development'
 })

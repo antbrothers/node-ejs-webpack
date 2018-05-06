@@ -25,8 +25,8 @@ module.exports = {
                 test: /\.ejs$/,
                 exclude: /node_modules/,
                 use: [{
-                    loader: 'ejs-compiled-loader'                 
-                }]
+                    loader: 'underscore-template-loader'                    
+                }]               
             },
             {
                 test: /\.js$/,
@@ -65,8 +65,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url-loader',
-                include: path.resolve(__dirname, '..', 'src/assets'),
+                loader: 'url-loader',              
                 options: {
                     limit: 10000,
                     name: '[name].[ext]',
