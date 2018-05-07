@@ -117,7 +117,7 @@ const HtmlTpl = getEntry('./src/**/*.ejs')
 ```
 
 ##### 项目导航 和组件预览图片
-<img src="https://github.com/antbrothers/node-ejs-webpack/blob/master/src/assets/images/1525670168.jpg" width="365"/> <img src="https://github.com/antbrothers/node-ejs-webpack/blob/master/src/assets/images/1525670269.jpg" width="365"/>
+<img src="https://github.com/antbrothers/node-ejs-webpack/blob/master/src/assets/images/1525670168.jpg"/> <img src="https://github.com/antbrothers/node-ejs-webpack/blob/master/src/assets/images/1525670269.jpg"/>
 ##### 项目首页图片
 <img src="https://github.com/antbrothers/node-ejs-webpack/blob/master/src/assets/images/1525670385.jpg"/>
 
