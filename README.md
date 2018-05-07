@@ -1,6 +1,8 @@
 # node-ejs-webpack
 ```js
-要求兼容到iE6,并且有SEO需求, 市面上一些MVVM 框架都不能用，只能用比较原始的 jquery, 但是mvvm的开发模式实在有很爽，于是用node webpack ejs express 配置了一个多页面应用程序，支持模块独立开发，模块预览，模块独立调试
+要求兼容到iE6,并且有SEO需求, 市面上一些MVVM 框架都不能用，只能用比较原始的 jquery, 
+但是mvvm的开发模式实在有很爽，于是用node webpack ejs express 
+配置了一个多页面应用程序，支持模块独立开发，模块预览，模块独立调试
 技术栈: jquery webpack ejs node express 
 ```
 
