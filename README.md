@@ -5,6 +5,20 @@
 配置了一个多页面应用程序，支持模块独立开发，模块预览，模块独立调试
 技术栈: jquery webpack ejs node express 
 ```
+```js
+生成静态页面部署：1 npm run probuild
+                2 把生成的dist 拷贝到服务器上即可
+支持服务端渲染部署: 1 把项目通过ftp上传到服务器
+                  2  npm install
+                  3 pm2 start ./build/server.js production
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devbuild": "webpack --config ./build/webpack.dev.config.js",
+    "probuild": "webpack --config ./build/webpack.pro.config.js",
+    "server": "node ./build/server.js development",
+    "pro": "node ./build/server.js production"
+  }
+```
 
 ```js
 |---build
