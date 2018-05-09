@@ -8,7 +8,7 @@
 ```js
 生成静态页面部署：1 npm run probuild
                 2 把生成的dist 拷贝到服务器上即可
-支持服务端渲染部署: 1 把项目通过ftp上传到服务器
+支持服务端渲染部署(把 css、html、js写入到内存): 1 把项目通过ftp上传到服务器
                   2  npm install
                   3 pm2 start ./build/server.js production
 "scripts": {
