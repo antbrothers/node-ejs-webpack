@@ -18,10 +18,13 @@ function getEntry(globPath) {
         tmp = entry.split('/').splice(-3);
         // 过滤掉本模块的 ejs 的入口文件
         if (path.extname(entry).indexOf('.ejs') > -1 && tmp[2].indexOf(tmp[1]) === -1 || path.extname(entry).indexOf('.js') > -1) {
-            if (basename === 'preview') {
-                entries[tmp[1] + '.preview'] = entry;
-            } else {
-                entries[basename] = entry;
+            // if (basename === 'preview') {
+            //     entries[tmp[1] + '.preview'] = entry;
+            // } else {
+            //     entries[basename] = entry;
+            // }
+            if (basename !== 'preview') {
+                entries[basename] = entry
             }
         }
     });
