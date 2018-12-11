@@ -41,7 +41,7 @@ const htmlConfig = () => {
                 new HtmlWebpackPlugin({
                     filename: `./${attr}.html`,
                     template: HtmlTpl[attr],
-                    chunks: ['common', 'app'], // 选择要打包js 入口文件
+                    chunks: ['lib', 'runtime','common', 'app'], // 选择要打包js 入口文件
                     chunksSortMode: 'manual',  // 顺序插入js
                     inject: true
                 })
@@ -65,18 +65,18 @@ const htmlConfig = () => {
 module.exports = merger(baseWebpackConfig, {
     entry: Entry,
     output: {
-        filename: 'js/[name].js',
+        filename: 'js/[name].[hash].js',
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '' //也会在服务器脚本用到
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new webpack.NoEmitOnErrorsPlugin(),
-        new ExtractTextPlugin('css/[name].css'),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        }),
+        new ExtractTextPlugin('css/[name].[hash].css'),
+        // new webpack.ProvidePlugin({
+        //     $: "jquery",
+        //     jQuery: "jquery"
+        // }),
         new UglifyJSPlugin({
             uglifyOptions: {
                 ie8: false,

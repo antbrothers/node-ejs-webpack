@@ -43,7 +43,7 @@ const htmlConfig = () => {
                 new HtmlWebpackPlugin({
                     filename: `./${attr}.html`,
                     template: HtmlTpl[attr],
-                    chunks: ['common', 'app'], // 选择要打包js 入口文件
+                    chunks: ['lib', 'runtime','common', 'app'], // 选择要打包js 入口文件
                     chunksSortMode: 'manual',  // 顺序插入js
                     inject: true
                 })
@@ -68,30 +68,30 @@ module.exports = merger(baseWebpackConfig, {
     entry: Entry,
     devtool: '#cheap-module-eval-source-map',
     output: {
-        filename: 'js/[name].js',
+        filename: 'js/[name].[hash].js',       
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '' //也会在服务器脚本用到
-    },
+    },   
     plugins: [
         new webpack.HotModuleReplacementPlugin(),  // 实现刷新浏览器
         new CleanWebpackPlugin(['dist']),
         new webpack.NoEmitOnErrorsPlugin(),
-        new ExtractTextPlugin('css/[name].css'),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        }),
-        // new BundleAnalyzerPlugin({
-        //     analyzerMode: 'server',
-        //     analyzerHost: '127.0.0.1',
-        //     analyzerPort: 8888,
-        //     reportFilename: 'report.html',
-        //     defaultSizes: 'parsed',
-        //     openAnalyzer: true,
-        //     statsFilename: 'stats.json',
-        //     statsOptions: null,
-        //     logLevel: 'info'
-        // })
+        new ExtractTextPlugin('css/[name].[hash].css'),
+        // new webpack.ProvidePlugin({
+        //     $: "jquery",
+        //     jQuery: "jquery"
+        // }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'server',
+            analyzerHost: '127.0.0.1',
+            analyzerPort: 8888,
+            reportFilename: 'report.html',
+            defaultSizes: 'parsed',
+            openAnalyzer: true,
+            statsFilename: 'stats.json',
+            statsOptions: null,
+            logLevel: 'info'
+        })
     ].concat(htmlConfig()),
     mode: 'development'
 })

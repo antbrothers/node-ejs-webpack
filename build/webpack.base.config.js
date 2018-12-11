@@ -7,20 +7,21 @@ function resolve(dir) {
 module.exports = {
     entry: {
         app: path.resolve(__dirname, '..', 'src/app.js'),
+        lib: path.resolve(__dirname, '..', 'src/lib.js'),
         common: path.resolve(__dirname, '..', 'src/verdors.js')
     },
     module: {
         rules: [
-            {
-                test: require.resolve('jquery'),
-                use: [{
-                    loader: 'expose-loader',
-                    options: 'jQuery'
-                },{
-                    loader: 'expose-loader',
-                    options: '$'
-                }]
-            },
+            // {
+            //     test: require.resolve('jquery'),
+            //     use: [{
+            //         loader: 'expose-loader',
+            //         options: 'jQuery'
+            //     },{
+            //         loader: 'expose-loader',
+            //         options: '$'
+            //     }]
+            // },
             {
                 test: /\.ejs$/,
                 exclude: /node_modules/,
@@ -77,7 +78,12 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.json', '.ejs'],
         alias: {
-            '@': resolve('src')              
+            '@': resolve('src')          
         }
+    },
+    optimization: {
+        runtimeChunk: {
+            "name": "runtime"
+        }        
     }
 }
