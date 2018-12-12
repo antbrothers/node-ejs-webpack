@@ -18,7 +18,11 @@
         <h3>
             首页
         </h3>
-        <a href="/index">index.html</a>        
+        <a href="/index">index.html</a>     
+         <h3>pages</h3>
+         <div id="pages">
+
+         </div>  
         <h3>
             components
         </h3>
@@ -51,6 +55,12 @@
                      }
                  })
                  $('#componets').append(html)
+
+                 var pageHtml = ''
+                 Object.keys(data.pages).forEach(function(_key) {
+                     pageHtml += '<a href="'+ _key +'">'+ data.pages[_key] +'</a>'
+                 })
+                 $('#pages').append(pageHtml)
              }
          });
     })

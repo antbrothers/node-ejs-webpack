@@ -41,18 +41,22 @@ if (process.argv[2] == 'development') {
 
 // 获取目录结构
 function walk(dir, _obj = {}, _key = '') {
-    var _key = _key
+    var _key = _key    
     fs.readdirSync(dir).forEach(function (filename) {
+        if (dir.indexOf('pages') > -1) {
+            _key = filename      
+            _obj[_key] = []
+        }
         if (filename.indexOf('.') === -1) {
             _key = filename
         }
         var path = dir + "/" + filename
         var stat = fs.statSync(path)
         if (stat && stat.isDirectory()) {
-            _obj[_key] = []
+            _obj[_key] = []                 
             walk(path, _obj, _key)
         }
-        else {
+        else {                      
             _obj[_key].push(path)
         }
     })
@@ -61,7 +65,9 @@ function walk(dir, _obj = {}, _key = '') {
 app.use('/get', express.Router().get('/menu', function (req, res, next) {
     var dir = 'src/components'
     var _compoents = walk(dir)
-    res.send({ compoents: _compoents })
+    var pageDir = 'src/pages'
+    var _pages = walk(pageDir)    
+    res.send({ compoents: _compoents, pages: _pages })
 }))
 
 
