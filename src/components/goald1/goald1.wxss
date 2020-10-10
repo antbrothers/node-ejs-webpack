@@ -1,0 +1,107 @@
+.goald1.goald_main {
+  width: 100%;
+  height: 94vw;
+  margin: 0 auto;
+  background: linear-gradient(315deg, #ff5a2a 0%, #e2231a 100%);
+  overflow: hidden;
+}
+.goald1.goald_main .goald_top {
+  width: 100%;
+  height: 37.33vw;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 1.06vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goald1.goald_main .goald_top .goald_title {
+  font-size: 4.53vw;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: -4.4vw;
+  letter-spacing: 0.26vw;
+}
+.goald1.goald_main .goald_top .score {
+  height: 50%;
+  font-size: 9.86vw;
+  font-weight: bold;
+  color: #ffffff;
+}
+.goald1.goald_main .goald_top .add {
+  height: 50%;
+  font-size: 9.6vw;
+  font-weight: bold;
+  color: #ffffff;
+}
+.goald1.goald_main .goald_top .goald_use {
+  height: 4.4vw;
+  font-size: 3.46vw;
+  font-weight: bold;
+  color: #ffffff;
+}
+.goald1.goald_main .goadl_content {
+  width: 95%;
+  height: 57%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.goald1.goald_main .goadl_content .goald_btn {
+  width: 45.0vw;
+  height: 10.66vw;
+  background: #18b868;
+  border-radius: 0.53vw;
+  text-align: center;
+  line-height: 10.66vw;
+  font-size: 4.26vw;
+  font-weight: 500;
+  color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6.133vw;
+}
+.goald1.goald_main .help_main {
+  position: absolute;
+  top: 0px;
+  right: 8vw;
+  margin: 3.2vw;
+}
+.goald1.goald_main .help_main .help_icon {
+  width: 4.26vw;
+  height: 4.26vw;
+}
+.goald1.goald_main .help_cont {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.goald1.goald_main .help_cont .logo-g {
+  width: 6.4vw;
+  height: 6.4vw;
+}
+.goald1.goald_main .help_cont .help {
+  font-size: 3.2vw;
+  /*px*/
+  font-weight: 400;
+  color: #ffffff;
+  margin-top: -2.93vw;
+}
+.goald1.goald_main .goald_m {
+  width: 100%;
+  height: 89%;
+}
+.goald1.goald_main .goald {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.goald_roll,
+.goald_countdown {
+  display: none;
+}

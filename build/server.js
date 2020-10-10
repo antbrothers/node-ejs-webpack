@@ -75,6 +75,7 @@ app.use('/get', express.Router().get('/menu', function (req, res, next) {
 // 如果要匹配更加复杂的路由，可以使用正则
 app.get('/:page?', function (req, res, next) {
     let page = req.params.page;
+    console.log('打印路由：' + page)
     if (page === 'favicon.ico') {
         return next()
     } else {

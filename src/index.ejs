@@ -1,3 +1,9 @@
+<!--
+ * @Author: linjianxi
+ * @Date: 2020-10-09 11:00:45
+ * @LastEditTime: 2020-10-09 15:09:40
+ * @Description: file content
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://images.wosaimg.com/sensorsdata/sensorsdata.config.js?str=1.0.1"></script>
+  <!-- <script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script> -->
+  <script type="text/javascript" charset="UTF-8"
+    src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"></script>
 </head>
 <body>
-    <header class="com-header">
+    <!-- <header class="com-header">
         <div>                        
             <%= require('../src/components/head/head.ejs')() %>          
         </div>
@@ -29,6 +39,15 @@
 
     <div class="main  quality-container">      
         <%= require('../src/components/discount/discount.ejs')() %>  
+    </div> -->
+    <div id="goald-main">
+        <%= require('../src/components/goald1/goald1.ejs')() %>  
+        <%= require('../src/components/goald2/goald2.ejs')() %> 
     </div>
 </body>
+<script>
+    (function (window, document, src, options) {
+  function appendJsToBody(s){var n=document.createElement("script"),e=document.body;n.type="text/javascript",n.async=!0,n.src=s,e?e.appendChild(n):console.warn("Please insert shouqianba-arms's script in body")}window.sqbArms=options,appendJsToBody(src);
+  })(window, document, "https://statics.wosaimg.com/cdn/@wosai/arms/arms.js", { project: "heart-magic" });
+  </script>
 </html>

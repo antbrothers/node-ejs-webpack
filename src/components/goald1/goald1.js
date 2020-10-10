@@ -1,25 +1,10 @@
 /*
  * @Author: linjianxi
- * @Date: 2020-10-09 11:00:45
- * @LastEditTime: 2020-10-10 09:35:57
- * @Description: file content
- */
-// require('./components/head/head')
-// require('./components/menu/menu')
-// require('./components/banner/banner')
-// require('./components/pattern/pattern')
-// require('./components/discount/discount')
-// require('./components/moveHeader/moveHeader')
-// require('./components/moveContent/moveContent')
-// console.log('3232434343')
-// require('./components/goald1/goald1')
-/*
- * @Author: linjianxi
  * @Date: 2020-07-03 10:01:38
  * @LastEditTime: 2020-10-10 09:18:14
  * @Description: file content
  */
-import { getQueryString } from '../config/getQueryString'
+import { getQueryString } from '../../../config/getQueryString'
 var landing_page = ''
 var click_tracking_urls = ''
 var jsonData = ""
@@ -144,29 +129,29 @@ $(function () {
                 if (dataParms === 1) { // 红                                  
                     // require('./lessFun').addCssByLink('/assets/goald/goaldcss1.css')
                     $('.goald_main').addClass('goald1')
-                    require('./assets/goald/goald1.less')
+                    require('../../assets/goald/goald1.less')
                 } else if (dataParms === 2) { // 绿      
                     $('.goald_main').addClass('goald2')
-                    require('./assets/goald/goald2.less')
+                    require('../../assets/goald/goald2.less')
                     // require('./lessFun').addCssByLink('/assets/goald/goaldcss2.css')
                 } else if (dataParms === 3) {  // 全图  
                     $('.goald_main').addClass('goald3')
-                    require('./assets/goald/goald3.less')
+                    require('../../assets/goald/goald3.less')
                     // require('./lessFun').addCssByLink('/assets/goald/goaldcss3.css')
                     _s3 = true
                     document.getElementById('goald_main').style.backgroundImage = (data && data.ads && data.ads.creative && data.ads.creative.url) ? 'url(' + data.ads.creative.url + ')' : 'url(../../assets/images/bg.gif)';
                 }
                 else if (dataParms === 4) {  // 全图   
                     $('.goald_main').addClass('goald4')
-                    require('./assets/goald/goald4.less')
+                    require('../../assets/goald/goald4.less')
                     // require('./lessFun').addCssByLink('/assets/goald/goaldcss4.css')
                 } else if (dataParms === 5) {  // 全图     
                     $('.goald_main').addClass('goald5')
-                    require('./assets/goald/goald5.less')
+                    require('../../assets/goald/goald5.less')
                     // require('./lessFun').addCssByLink('/assets/goald/goaldcss5.css')
                 } else if (dataParms === 6) {  // 跑马灯     
                     $('.goald_main').addClass('goald6')
-                    require('./assets/goald/goald6.less')
+                    require('../../assets/goald/goald6.less')
                     setInterval(()=>{
                         AutoScroll("#goald_roll")
                     }, 1500)
@@ -178,7 +163,7 @@ $(function () {
                     $('.consume_value').text((data.credits && data.credits.gain) ?  data.credits.gain :  0)
                 }else if (dataParms === 7) {  // 跑马灯     
                     $('.goald_main').addClass('goald7')
-                    require('./assets/goald/goald7.less')
+                    require('../../assets/goald/goald7.less')
                     setInterval(()=>{
                         AutoScroll("#goald_roll")
                     }, 1500)
@@ -188,7 +173,7 @@ $(function () {
                     $('.consume_value').text((data.credits && data.credits.gain) ?  data.credits.gain :  0)
                 } else {
                     $('.goald_main').addClass('goald5')
-                    require('./assets/goald/goald5.less')
+                    require('../../assets/goald/goald5.less')
                 }
                 $('.goald_m').css('display', 'block')
                 $('.price').text((data.credits && data.credits.balance) ? data.credits.balance : 0)
@@ -251,4 +236,3 @@ $(function () {
 window.onbeforeunload = function () {
     appear(jsonData, showTime)
 }
-
